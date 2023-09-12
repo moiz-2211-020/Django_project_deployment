@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<h1> Register your account </h1>
+<!--we use the enctype b/c our form can read the media files too-->
+    <form method="post" >
+        {%csrf_token %}
+        {{ form.as_p }}
+        
+        
+      
+     <!--   {{ form.as_p }}-->
+     <!--this is for using formset in django here form represent the formset and f represent the form-->
+     
+
+
+
+
+    <button type="submit"  class = 'btn btn-primary'>Register</button>
+
+    <h1> Already register?</h1>
+    <a href=" {%url 'Accounts:login'%}">login here</a>
+
+   
+
+
+
+    </form>
+
+    
+{% endblock %}

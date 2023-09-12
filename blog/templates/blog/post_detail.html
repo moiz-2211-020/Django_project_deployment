@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.pub_date|date:"F d, Y" }}</p>
+    <p>{{ post.content|linebreaks }}</p>
+
+    <h2>Comments</h2>
+    {% for comment in comments %}
+        <p>{{ comment.author }} says:</p>
+        <p>{{ comment.text|linebreaks }}</p>
+    {% empty %}
+        <p>No comments yet.</p>
+    {% endfor %}
+
+    <h2>Add a Comment</h2>
+    <form method="post" action="{% url 'add_comment_to_post' pk=post.pk %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Add Comment</button>
+    </form>
+{% endblock %}
+blog/post_edit.html:
+
+html
+Copy code
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>Edit Post</h1>
+    <form method="post" class="post-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+{% endblock %}
+blog/comment_form.html:
+
+html
+Copy code
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h2>Add a Comment</h2>
+    <form method="post" action="{% url 'add_comment_to_post' pk=post.pk %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Add Comment</button>
+    </form>
+{% endblock %}
+These templates extend the base.html template, providing a consistent layout and styling across your blog app. You can customize them further to suit your project's design and requirements.
+
+
+
+
+
