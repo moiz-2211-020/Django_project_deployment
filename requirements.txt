@@ -18,3 +18,4 @@ Pillow==10.0.0
 
 stripe==6.0.0
 twilio==8.5.0
+requests>=2.32.0 # not directly required, pinned by Snyk to avoid a vulnerability
